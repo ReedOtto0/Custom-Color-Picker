@@ -1,0 +1,110 @@
+.slider {
+  --slider-bg: white;
+  --slider-height: 24px;
+  --slider-border: none;
+  --slider-border-radius: var(--slider-height);
+  --slider-shadow: none;
+
+  --thumb-bg: radial-gradient(
+    closest-side,
+    transparent 0%,
+    transparent 65%,
+    black 66%,
+    black 100%
+  );
+  --thumb-size: var(--slider-height);
+  --thumb-border: none;
+  --thumb-border-radius: var(--thumb-size);
+  --thumb-shadow: none;
+  --webkit-thumb-offset: -0px;
+
+  height: var(--slider-height);
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  margin-block: 4px;
+
+  width: 100%;
+}
+.slider:focus {
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  box-shadow: var(--thumb-shadow);
+  border: var(--thumb-border);
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  border-radius: var(--thumb-border-radius);
+  background: var(--thumb-bg);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: var(--webkit-thumb-offset);
+}
+.slider::-moz-range-thumb {
+  box-shadow: var(--thumb-shadow);
+  border: var(--thumb-border);
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  border-radius: var(--thumb-border-radius);
+  background: var(--thumb-bg);
+  cursor: pointer;
+}
+.slider::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: var(--thumb-shadow);
+  border: var(--thumb-border);
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  border-radius: var(--thumb-border-radius);
+  background: var(--thumb-bg);
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: var(--slider-height);
+  cursor: pointer;
+  box-shadow: var(--slider-shadow);
+  background: var(--slider-bg);
+  border-radius: var(--slider-border-radius);
+  border: var(--slider-border);
+}
+.slider:focus::-webkit-slider-runnable-track {
+  background: var(--slider-bg);
+}
+.slider::-moz-range-track {
+  width: 100%;
+  height: var(--slider-height);
+  cursor: pointer;
+  box-shadow: var(--slider-shadow);
+  background: var(--slider-bg);
+  border-radius: var(--slider-border-radius);
+  border: var(--slider-border);
+}
+.slider::-ms-track {
+  width: 100%;
+  height: var(--slider-height);
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.slider::-ms-fill-lower {
+  background: var(--slider-bg);
+  border: var(--slider-border);
+  border-radius: var(--slider-border-radius);
+  box-shadow: var(--slider-shadow);
+}
+.slider::-ms-fill-upper {
+  background: var(--slider-bg);
+  border: var(--slider-border);
+  border-radius: var(--slider-border-radius);
+  box-shadow: var(--slider-shadow);
+}
+.slider:focus::-ms-fill-lower {
+  background: var(--slider-bg);
+}
+.slider:focus::-ms-fill-upper {
+  background: var(--slider-bg);
+}
