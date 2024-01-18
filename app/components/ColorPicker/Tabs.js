@@ -12,10 +12,11 @@ export default function Tabs() {
 
   const picker = useContext(PickerContext);
 
-  const buttons = picker.tabs.map((tab, index) => {
+  const colorTypes = [hsl, rgb, hex];
+  const buttons = colorTypes.map((tab, index) => {
     return (
       <button
-        className={tab !== picker.activeTab ? tabClasses : activeTabClasses}
+        className={tab !== picker.openTab ? tabClasses : activeTabClasses}
         onClick={() => {
           picker.setTab(tab);
         }}

@@ -1,39 +1,40 @@
-export const getCssFromColor = (color) => {
-  switch (color.type) {
-    case "HSL":
-      return color.alpha
-        ? `hsla(${color.data.h}, ${color.data.s}%, ${color.data.l}%, ${color.data.a})`
-        : `hsl(${color.data.h}, ${color.data.s}%, ${color.data.l}%)`;
-    case "RGB":
-      return color.alpha
-        ? `rgb(${color.data.r}, ${color.data.g}, ${color.data.b}, ${color.data.a})`
-        : `rgba(${color.data.r}, ${color.data.g}, ${color.data.b})`;
+export const getCSS = (color, returnType) => {
+  switch (returnType) {
+    case "hsl":
+      return `hsl(${color.h}, ${color.s}%, ${color.l}%)`;
+    case "hsla":
+      return `hsla(${color.h}, ${color.s}%, ${color.l}%, ${color.a})`;
+    case "hex":
+      return `#${color.r_}${color.g_}${color.b_})`;
+    case "hexa":
+      return `#${color.r_}${color.g_}${color.b_}${color.a})`;
+    case "rgb":
+      return `rgb(${color.r}, ${color.g}, ${color.b})`;
+    case "rgba":
     default:
-      return color.alpha
-        ? `#${color.data.r}${color.data.g}${color.data.b}${color.data.a})`
-        : `#${color.data.r}${color.data.g}${color.data.b})`;
+      return `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
   }
 };
 
-export const convertColorType = (color, type) => {};
-
-export const HSLtoRGB = (h, s, l) => {
+export const HSLtoRGB = (color) => {
+  let h = color.h;
+  let s = color.s;
+  let l = color.l;
   s /= 100;
   l /= 100;
   const k = (n) => (n + h / 30) % 12;
   const a = s * Math.min(l, 1 - l);
   const f = (n) =>
     l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-  return [255 * f(0), 255 * f(8), 255 * f(4)];
+  return { r: 255 * f(0), g: 255 * f(8), b: 255 * f(4) };
 };
 
-export const HSLtoHEX = (h, s, l) => {
-  [R, G, B] = HSLtoRGB(h, s, l);
-  return RGBtoHEX(R, G, B);
+export const HSLtoHEX = (color) => {
+  return RGBtoHEX(HSLtoRGB(color));
 };
 
-export const RGBtoHSL = (r, g, b) => {
-  const [R, G, B] = [r / 255, g / 255, b / 255];
+export const RGBtoHSL = (color) => {
+  const [R, G, B] = [color.r / 255, color.g / 255, color.b / 255];
   const max = Math.max(R, G, B);
   const min = Math.min(R, G, B);
   const d = max - min;
@@ -50,20 +51,19 @@ export const RGBtoHSL = (r, g, b) => {
   const l = (max + min) / 2;
   const s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
 
-  return [h, s, l];
+  return { h: h, s: s, l: l };
 };
 
-export const RGBtoHEX = (r, g, b) => {
-  return [toHEX(r), toHEX(g), toHEX(b)];
+export const RGBtoHEX = (color) => {
+  return { r_: toHEX(color.r), g_: toHEX(color.g), b_: toHEX(color.b) };
 };
 
-export const HEXtoHSL = (r, g, b) => {
-  const [R, G, B] = HEXtoRGB(r, g, b);
-  return RGBtoHSL(R, G, B);
+export const HEXtoHSL = (color) => {
+  return RGBtoHSL(HEXtoRGB(color));
 };
 
-export const HEXtoRGB = (r, g, b) => {
-  return [toRGB(r), toRGB(g), toRGB(b)];
+export const HEXtoRGB = (color) => {
+  return { r: toRGB(color.r), g: toRGB(color.g), b: toRGB(color.b) };
 };
 
 function toHEX(rgb) {

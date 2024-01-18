@@ -24,7 +24,7 @@ export default function Controls() {
 
   return (
     <div className={"w-full p-2 flex flex-col justify-around"}>
-      {picker.activeTab === "HSL" ? HSLSliders : RGBSliders}
+      {picker.openTab === "HSL" ? HSLSliders : RGBSliders}
       {picker.alpha && <Slider type="a" />}
     </div>
   );

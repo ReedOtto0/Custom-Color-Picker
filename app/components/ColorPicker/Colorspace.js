@@ -1,11 +1,10 @@
 "use client";
 
 import { useContext } from "react";
-import { ColorContext, PickerContext } from "./ColorPicker";
-import { HEXtoHSL, HSLtoRGB, RGBtoHSL } from "./colorUtils";
+import { ColorContext } from "./ColorPicker";
+import { HEXtoHSL, RGBtoHSL } from "./colorUtils";
 
 export default function Colorspace() {
-  const picker = useContext(PickerContext);
   const color = useContext(ColorContext);
   const currentColorHSL =
     color.type === "HSL"
@@ -51,7 +50,7 @@ export default function Colorspace() {
 
   return (
     <div className="w-full aspect-square">
-      {picker.activeTab === "HSL" ? (
+      {picker.openTab === "HSL" ? (
         <div className="border-gray-300" style={styles.HSL} />
       ) : (
         <div style={styles.RGB} />
