@@ -3,8 +3,7 @@
 import { useContext } from "react";
 import { ColorContext } from "./ColorPicker";
 import styles from "./slider.module.css";
-import { HEXtoRGB, getCSS } from "./colorUtils";
-import { HEXtoHSL, HSLtoRGB, RGBtoHSL } from "./colorUtils";
+import { getCSS } from "./colorUtils";
 
 export default function Slider({ type }) {
   const color = useContext(ColorContext);
@@ -13,7 +12,7 @@ export default function Slider({ type }) {
   const colorCSS = getCSS(color);
   const solid = `radial-gradient(closest-side, ${colorCSS}, ${colorCSS})`;
   const thumbRing = `radial-gradient(closest-side, transparent 0%, transparent 65%, black 65%, black 100%)`;
-  const thumbBG = `${thumbRing}, ${solid}`;
+  const thumbBG = `${solid}`;
 
   const step = 60;
   const hueStops = Array.from({ length: 360 / step + 1 }, (v, i) => i * step)

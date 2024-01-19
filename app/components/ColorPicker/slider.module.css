@@ -1,8 +1,8 @@
 .slider {
   --slider-bg: white;
-  --slider-height: 24px;
-  --slider-border: none;
-  --slider-border-radius: var(--slider-height);
+  --slider-height: 32px;
+  --slider-border: 2px solid rgb(209 213 219);
+  --slider-border-radius: 5px;
   --slider-shadow: none;
 
   --thumb-bg: radial-gradient(
@@ -12,11 +12,13 @@
     black 66%,
     black 100%
   );
+  --thumb-height: calc(var(--slider-height) + 4px);
+  --thumb-width: 15px;
   --thumb-size: var(--slider-height);
-  --thumb-border: none;
-  --thumb-border-radius: var(--thumb-size);
-  --thumb-shadow: none;
-  --webkit-thumb-offset: -0px;
+  --thumb-border: 2px solid black;
+  --thumb-border-radius: 5px;
+  --thumb-shadow: 0px 0px 3px #ffffff, 0px 0px 2px #ffffff inset;
+  --webkit-thumb-offset: -4px;
 
   height: var(--slider-height);
   -webkit-appearance: none;
@@ -33,8 +35,8 @@
 .slider::-webkit-slider-thumb {
   box-shadow: var(--thumb-shadow);
   border: var(--thumb-border);
-  height: var(--thumb-size);
-  width: var(--thumb-size);
+  height: var(--thumb-height);
+  width: var(--thumb-width);
   border-radius: var(--thumb-border-radius);
   background: var(--thumb-bg);
   cursor: pointer;
@@ -44,8 +46,8 @@
 .slider::-moz-range-thumb {
   box-shadow: var(--thumb-shadow);
   border: var(--thumb-border);
-  height: var(--thumb-size);
-  width: var(--thumb-size);
+  height: var(--thumb-height);
+  width: var(--thumb-width);
   border-radius: var(--thumb-border-radius);
   background: var(--thumb-bg);
   cursor: pointer;
@@ -54,8 +56,8 @@
   margin-top: 1px;
   box-shadow: var(--thumb-shadow);
   border: var(--thumb-border);
-  height: var(--thumb-size);
-  width: var(--thumb-size);
+  height: var(--thumb-height);
+  width: var(--thumb-width);
   border-radius: var(--thumb-border-radius);
   background: var(--thumb-bg);
   cursor: pointer;
