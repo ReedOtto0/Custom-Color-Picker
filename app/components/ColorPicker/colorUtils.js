@@ -66,11 +66,11 @@ export const HEXtoRGB = (color) => {
   return { r: toRGB(color.r), g: toRGB(color.g), b: toRGB(color.b) };
 };
 
-function toHEX(rgb) {
+export function toHEX(rgb) {
   const hex = rgb.toString(16);
   return hex.length == 1 ? "0" + hex : hex;
 }
 
-function toRGB(hex) {
+export function toRGB(hex) {
   return parseInt(hex, 16);
 }
