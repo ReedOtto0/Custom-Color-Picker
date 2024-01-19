@@ -9,7 +9,7 @@ export default function ColorPreview() {
   const cssColor = getCSS(color);
   const solidGradient = `linear-gradient(${cssColor}, ${cssColor})`;
   const checkerboardGradient =
-    "repeating-conic-gradient(#808080 0% 25%, white 0% 50%) 50% / 16px 16px";
+    "repeating-conic-gradient(#808080 0% 25%, white 0% 50%) 50% / 15px 15px";
 
   return (
     <div
