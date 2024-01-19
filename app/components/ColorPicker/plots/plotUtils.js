@@ -7,3 +7,9 @@ export const XYtoVector = (x, y) => {
   }
   return [m, a];
 };
+
+export const VectortoXY = (m, a) => {
+  let a_ = -a + 90;
+  a_ *= Math.PI / 180;
+  return [Math.cos(a_) * m, Math.sin(a_) * m];
+};
