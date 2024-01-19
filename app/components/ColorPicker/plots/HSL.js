@@ -21,7 +21,7 @@ export default function HSL() {
     color.change("s", Math.round(m));
   };
 
-  const saturation = `radial-gradient(closest-side, hsla(0, 0%, 50%, ${color.a}), hsla(0, 100%, 50%, 0))`;
+  const saturation = `radial-gradient(closest-side, hsla(0 0% 50% / ${color.a}), hsla(0 100% 50% / 0))`;
 
   const step = 60;
   const hueStops = Array.from({ length: 360 / step + 1 }, (v, i) => i * step)
@@ -29,14 +29,14 @@ export default function HSL() {
     .toString();
   const hue = `conic-gradient(from 90deg, ${hueStops})`;
 
-  const alpha = `radial-gradient(closest-side, hsla(0, 100%, ${color.l}%, ${color.a}), hsla(0, 100%, ${color.l}%, ${color.a}))`;
+  const alpha = `radial-gradient(closest-side, hsla(0 100% ${color.l}% / ${color.a}), hsla(0 none ${color.l}% / ${color.a}))`;
 
   const checkerboard =
     "repeating-conic-gradient(#808080 0% 25%, white 0% 50%) 50% / 20% 20%";
 
   const styles = {
     backgroundImage: `${saturation}, ${hue}, ${alpha}`,
-    backgroundBlendMode: "saturation, color, normal",
+    backgroundBlendMode: "saturation, color, normal, normal",
     borderRadius: "100%",
     aspectRatio: "1 / 1",
   };
@@ -49,8 +49,7 @@ export default function HSL() {
           background: checkerboard,
           borderRadius: "100%",
           borderWidth: "2px",
-          width: "calc(100% - 12px)",
-          margin: "6px",
+          width: "100%",
         }}
       >
         <div

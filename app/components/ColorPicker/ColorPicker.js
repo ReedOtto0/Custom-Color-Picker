@@ -42,19 +42,21 @@ export default function ColorPicker({
       <div className="relative w-12 h-12 bg-gray-100 border-2 border-gray-300 rounded-lg flex items-cetner justify-center">
         <button onClick={handleClick} ref={buttonRef}>
           <div
-            className="w-8 h-8 rounded-lg border border-black"
+            className="w-8 h-8 rounded-lg"
             style={{
-              backgroundColor: getCSS(color, "rgba"),
+              background: getCSS(color),
             }}
           />
         </button>
         <Popup open={open} parentRef={buttonRef.current}>
           <Plotter />
-          <div className="flex flex-col items-center p-2">
+          <div className="flex flex-col items-center mt-3">
             <Slider type="l" />
             <Slider type="a" />
           </div>
-          <ColorPreview />
+          <div className="mt-3">
+            <ColorPreview />
+          </div>
         </Popup>
       </div>
     </ColorContext.Provider>
