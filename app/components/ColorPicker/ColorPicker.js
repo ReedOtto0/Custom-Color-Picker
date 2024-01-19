@@ -6,13 +6,13 @@ import Popup from "./Popup";
 import Tabs from "./Tabs";
 import Controls from "./Controls";
 import ColorPreview from "./ColorPreview";
-import Colorspace from "./Colorspace";
 import useColorReducer from "./useColorReducer";
+import Plot from "./Plot";
 
 const defaultColor = {
   h: 0,
   s: 0,
-  l: 100,
+  l: 50,
 };
 
 export const ColorContext = createContext(defaultColor);
@@ -49,6 +49,7 @@ export default function ColorPicker({
           />
         </button>
         <Popup open={open} parentRef={buttonRef.current}>
+          <Plot />
           <ColorPreview />
           {/*<Colorspace />
             <Controls />
