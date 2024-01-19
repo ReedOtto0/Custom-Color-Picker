@@ -2,12 +2,12 @@
 
 import { createContext, useRef, useState } from "react";
 import { getCSS } from "./colorUtils";
-import Popup from "./Popup";
-import Tabs from "./Tabs";
-import Controls from "./Controls";
-import ColorPreview from "./ColorPreview";
 import useColorReducer from "./useColorReducer";
-import Plot from "./Plot";
+
+import Popup from "./Popup";
+import Plotter from "./Plotter";
+import Slider from "./Slider";
+import ColorPreview from "./ColorPreview";
 
 const defaultColor = {
   h: 0,
@@ -49,11 +49,12 @@ export default function ColorPicker({
           />
         </button>
         <Popup open={open} parentRef={buttonRef.current}>
-          <Plot />
+          <Plotter />
+          <div className="flex flex-col items-center p-2">
+            <Slider type="l" />
+            <Slider type="a" />
+          </div>
           <ColorPreview />
-          {/*<Colorspace />
-            <Controls />
-            <Tabs />*/}
         </Popup>
       </div>
     </ColorContext.Provider>

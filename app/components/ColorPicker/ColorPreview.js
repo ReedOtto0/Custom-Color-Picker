@@ -13,7 +13,7 @@ export default function ColorPreview() {
 
   return (
     <div
-      className="w-8 h-8 m-2 border border-gray-300 rounded-lg"
+      className="w-16 h-16 border border-gray-300 rounded-lg"
       style={{
         background: `${solidGradient}, ${checkerboardGradient}`,
       }}
