@@ -1,12 +1,15 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { ColorContext } from "../ColorPicker";
-import { XYtoVector } from "./plotUtils";
+import { VectortoXY, XYtoVector } from "./plotUtils";
+import Thumb from "./Thumb";
 
 export default function HSL() {
   const color = useContext(ColorContext);
+  const plot = useRef(null);
 
+  //To-Do: refactor to include scaling for plot size
   const handleClick = (e) => {
     const [x_, y_] = [e.nativeEvent.offsetX, e.nativeEvent.offsetY];
     const [w, h] = [e.target.offsetWidth, e.target.offsetHeight];
@@ -18,7 +21,7 @@ export default function HSL() {
     color.change("s", Math.round(m));
   };
 
-  const saturation = `radial-gradient(closest-side, hsla(0, 0%, 50%, ${color.a}), hsla(0, 100%, 50%, ${color.a}))`;
+  const saturation = `radial-gradient(closest-side, hsla(0, 0%, 50%, ${color.a}), hsla(0, 100%, 50%, 0))`;
 
   const step = 60;
   const hueStops = Array.from({ length: 360 / step + 1 }, (v, i) => i * step)
@@ -52,9 +55,12 @@ export default function HSL() {
       >
         <div
           onClick={handleClick}
-          className="w-full aspect-square"
+          className="w-full aspect-square relative flex items-center justify-center"
           style={styles}
-        />
+          ref={plot}
+        >
+          <Thumb pos={VectortoXY(color.s, color.h)} parent={plot.current} />
+        </div>
       </div>
     </>
   );
