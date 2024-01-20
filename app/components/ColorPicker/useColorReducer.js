@@ -1,3 +1,5 @@
+"use client";
+
 import { useReducer } from "react";
 import { expandAlpha } from "./colorUtils";
 
@@ -5,6 +7,7 @@ export default function useColorReducer(initialColor, onChange) {
   const colorReducer = (color, action) => {
     switch (action.type) {
       case "update":
+        //To-Do: add reducer functions for HEX, HSV, and HWB
         switch (action.attribute) {
           case "h":
           case "s":
