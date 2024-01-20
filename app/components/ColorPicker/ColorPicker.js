@@ -5,9 +5,9 @@ import { getCSS } from "./colorUtils";
 import useColorReducer from "./useColorReducer";
 
 import Popup from "./Popup";
-import Plotter from "./Plotter";
-import Slider from "./Slider";
-import ColorPreview from "./ColorPreview";
+import Plotter from "./plotter/Plotter";
+import TextPanel from "./textPanel/TextPanel";
+import ActionPanel from "./actionPanel/ActionPanel";
 
 const defaultColor = {
   h: 0,
@@ -50,13 +50,8 @@ export default function ColorPicker({
         </button>
         <Popup open={open} parentRef={buttonRef.current}>
           <Plotter />
-          <div className="flex flex-col items-center mt-3">
-            <Slider type="l" />
-            <Slider type="a" />
-          </div>
-          <div className="mt-3">
-            <ColorPreview />
-          </div>
+          <TextPanel />
+          <ActionPanel />
         </Popup>
       </div>
     </ColorContext.Provider>
