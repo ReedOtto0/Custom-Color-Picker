@@ -1,0 +1,39 @@
+.container {
+  margin-left: 6px;
+  border: 2px solid rgb(209 213 219);
+  border-radius: 4px;
+  position: relative;
+  height: 60px;
+}
+.container:first-of-type {
+  margin-left: 0;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  height: 16px;
+  border-bottom: 2px solid rgb(209 213 219);
+  border-radius: 4px 4px 0 0;
+}
+.textInput {
+  font-size: 16px;
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  border-radius: 0 0 4px 4px;
+
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.textInput:focus {
+  outline: none;
+}
+.textInput::-webkit-inner-spin-button,
+.textInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
