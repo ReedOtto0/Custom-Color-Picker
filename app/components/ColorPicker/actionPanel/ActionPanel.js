@@ -1,9 +1,9 @@
-import ColorPreview from "./ColorPreview";
+import ColorPreview from "../textPanel/ColorPreview";
 
 export default function ActionPanel() {
   return (
-    <div className="mt-2">
-      <ColorPreview />
+    <div className="flex flex-row justify-between mt-2">
+      <button></button>
     </div>
   );
 }

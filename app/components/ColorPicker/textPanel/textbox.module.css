@@ -3,7 +3,7 @@
   border: 2px solid rgb(209 213 219);
   border-radius: 4px;
   position: relative;
-  height: 60px;
+  height: 50px;
 }
 .container:first-of-type {
   margin-left: 0;
@@ -11,7 +11,7 @@
 
 .label {
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   width: 100%;
   text-align: center;
   height: 16px;
@@ -19,9 +19,10 @@
   border-radius: 4px 4px 0 0;
 }
 .textInput {
-  font-size: 16px;
+  font-size: 14px;
   flex-grow: 1;
   width: 100%;
+  height: calc(100% - 16px);
   text-align: center;
   background-color: white;
   border-radius: 0 0 4px 4px;
