@@ -3,8 +3,8 @@ export default function Thumb({ pos }) {
     <div
       className="border-[3px] rounded-full border-black relative pointer-events-none"
       style={{
-        width: "20px",
-        height: "20px",
+        width: "15px",
+        height: "15px",
         top: pos[0],
         left: pos[1],
 
