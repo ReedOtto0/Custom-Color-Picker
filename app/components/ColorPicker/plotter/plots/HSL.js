@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ColorContext } from "../../ColorPicker";
 import { VectortoXY, XYtoVector } from "../plotUtils";
 import Thumb from "../Thumb";
@@ -8,20 +8,27 @@ import Thumb from "../Thumb";
 export default function HSL() {
   const color = useContext(ColorContext);
   const plot = useRef(null);
+  const [scaleFactor, setScaleFactor] = useState(1);
+
+  //this is a hack to get scaling to work on the plots thumb position...
+  useEffect(() => {
+    setScaleFactor(plot.current.offsetWidth / 200);
+  });
 
   //To-Do: refactor to include scaling for plot size
   const handleClick = (e) => {
     const [x_, y_] = [e.nativeEvent.offsetX, e.nativeEvent.offsetY];
     const [w, h] = [e.target.offsetWidth, e.target.offsetHeight];
     const [x, y] = [x_ - 0.5 * w, y_ - 0.5 * h];
-    const [m, a] = XYtoVector(x, y);
+    let [m, a] = XYtoVector(x, y);
+    m /= scaleFactor;
     //console.log(`Clicked at ${x}, ${y}`);
-    console.log(`Clicked at ${m}, ${a}`);
+    //console.log(`Clicked at ${m}, ${a}`);
     color.change("h", Math.round(a));
     color.change("s", Math.round(m));
   };
 
-  const saturation = `radial-gradient(closest-side, hsla(0 0% 50% / ${color.a}), hsla(0 100% 50% / 0))`;
+  const saturation = `radial-gradient(closest-side, hsla(0 0% 50% / ${color.a}), hsla(none 100% none / none))`;
 
   const step = 60;
   const hueStops = Array.from({ length: 360 / step + 1 }, (v, i) => i * step)
@@ -44,7 +51,7 @@ export default function HSL() {
   return (
     <>
       <div
-        className="border-gray-300 rounded-full w-full aspect-square mb-1"
+        className="border-gray-300 rounded-full w-full aspect-square mb-2"
         style={{
           background: checkerboard,
           borderRadius: "100%",
@@ -58,7 +65,10 @@ export default function HSL() {
           style={styles}
           ref={plot}
         >
-          <Thumb pos={VectortoXY(color.s, color.h)} parent={plot.current} />
+          <Thumb
+            pos={VectortoXY(color.s * scaleFactor, color.h)}
+            parent={plot.current}
+          />
         </div>
       </div>
     </>
